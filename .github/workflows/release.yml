@@ -22,6 +22,9 @@ jobs:
       - name: Install Flutter dependencies
         run: flutter pub get
 
+      - name: Build USB IDs database
+        run: python3 tools/build_usbids_db.py
+
       - name: Build ARM APK
         run: flutter build apk --release --target-platform android-arm,android-arm64
 

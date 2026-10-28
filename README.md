@@ -262,6 +262,7 @@ The release workflow builds one APK containing both 32-bit ARM (`armeabi-v7a`) a
 
 ```sh
 flutter pub get
+python3 tools/build_usbids_db.py
 flutter build apk --release --target-platform android-arm,android-arm64
 ```
 
