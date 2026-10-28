@@ -256,6 +256,17 @@ Note: In addition to the listed aliases, TapDucky accepts snake_case forms like 
 - On Android 8+, notifications use a dedicated channel; foreground service keeps the HID session active.
 - App avoids coupling runtime UI strings to Android resources in the service layer to reduce resource merge risk.
 
+### Android APK build
+
+The release workflow builds one APK containing both 32-bit ARM (`armeabi-v7a`) and 64-bit ARM (`arm64-v8a`) Flutter libraries. To build it locally:
+
+```sh
+flutter pub get
+flutter build apk --release --target-platform android-arm,android-arm64
+```
+
+The APK is written to `build/app/outputs/flutter-apk/app-release.apk`. Check a connected phone's supported ABIs with `adb shell getprop ro.product.cpu.abilist` and `adb shell getprop ro.product.cpu.abilist32`; the APK must include an ABI from the device's supported list.
+
 ## Requirements
 
 - Rooted Android device with Linux USB Gadget (ConfigFS) support
